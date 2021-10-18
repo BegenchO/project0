@@ -34,11 +34,11 @@ object Main {
         println("----------------------------------------------------")
         println("Documents ready! Inserting into the database...")
 
-        // Save documents to local mongoDB 
-        collection.insertMany(bsonDocuments).printResults()
-
+        // Save documents to local mongoDB and print message
+        println(collection.insertMany(bsonDocuments).headResult())
+        
         println("----------------------------------------------------")
-        println("Successfully saved documents into the database! Closing connection...")
+        println("Closing connection...")
 
         client.close()
 
