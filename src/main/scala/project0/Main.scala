@@ -35,7 +35,11 @@ object Main {
         println("Documents ready! Inserting into the database...")
 
         // Save documents to local mongoDB and print message
-        println(collection.insertMany(bsonDocuments).headResult())
+        try {
+            println(collection.insertMany(bsonDocuments).headResult())
+        } catch {
+            case _: Throwable => println("ERROR: Was NOT able to save documents into the database. Please try again!")
+        }
         
         println("----------------------------------------------------")
         println("Closing connection...")
